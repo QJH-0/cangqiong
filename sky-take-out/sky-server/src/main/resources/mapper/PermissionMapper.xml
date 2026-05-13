@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.PermissionMapper">
+
+    <!-- 员工 -> 角色 -> 权限，汇总该员工拥有的权限编码 -->
+    <select id="listPermissionCodesByEmployeeId" resultType="java.lang.String">
+        select p.code
+        from employee_role er
+                 inner join role_permission rp on er.role_id = rp.role_id
+                 inner join permission p on rp.permission_id = p.id
+        where er.employee_id = #{employeeId}
+    </select>
+
+</mapper>

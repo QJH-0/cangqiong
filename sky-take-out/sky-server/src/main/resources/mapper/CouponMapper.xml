@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.CouponMapper">
+
+    <insert id="insert" parameterType="com.sky.entity.Coupon" useGeneratedKeys="true" keyProperty="id">
+        insert into coupon(name, description, stock, status, start_time, end_time, limit_per_user, create_time, update_time)
+        values (#{name}, #{description}, #{stock}, #{status}, #{startTime}, #{endTime}, #{limitPerUser}, #{createTime}, #{updateTime})
+    </insert>
+
+    <select id="getById" resultType="com.sky.entity.Coupon">
+        select *
+        from coupon
+        where id = #{id}
+    </select>
+
+    <select id="listEnabled" resultType="com.sky.vo.CouponVO">
+        select id, name, description, stock, status, start_time, end_time, limit_per_user
+        from coupon
+        where status = 1
+        order by id desc
+    </select>
+
+</mapper>

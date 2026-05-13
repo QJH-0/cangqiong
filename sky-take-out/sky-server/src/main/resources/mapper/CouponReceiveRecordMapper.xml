@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.CouponReceiveRecordMapper">
+
+    <insert id="insert" parameterType="com.sky.entity.CouponReceiveRecord" useGeneratedKeys="true" keyProperty="id">
+        insert into coupon_receive_record(coupon_id, user_id, receive_time, source)
+        values (#{couponId}, #{userId}, #{receiveTime}, #{source})
+    </insert>
+
+</mapper>
